@@ -126,7 +126,12 @@ galleryItems.forEach(item => {
   item.addEventListener('click', () => {
     if (lightbox) {
       const content = lightbox.querySelector('.lightbox-content');
-      if (content) content.textContent = item.textContent;
+      const img = item.querySelector('img');
+      if (content && img) {
+        content.innerHTML = '<img src="' + img.src + '" alt="' + (img.alt || '') + '">';
+      } else if (content) {
+        content.textContent = item.textContent;
+      }
       lightbox.classList.add('active');
     }
   });
