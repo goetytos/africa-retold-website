@@ -40,15 +40,41 @@ if (scrollTopBtn) {
   });
 }
 
-/* ===== Navbar Scroll Effect ===== */
+/* ===== Navbar Transparent → Solid on Scroll ===== */
 const navbar = document.querySelector('.navbar');
 if (navbar) {
-  window.addEventListener('scroll', () => {
-    navbar.style.boxShadow = window.scrollY > 50
-      ? '0 2px 12px rgba(0,0,0,.15)'
-      : '0 2px 8px rgba(0,0,0,.08)';
-  });
+  function updateNavbar() {
+    if (window.scrollY > 80) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', updateNavbar);
+  // On subpages (no hero), always show solid navbar
+  if (!document.querySelector('.hero')) {
+    navbar.classList.add('scrolled');
+  }
+  updateNavbar();
 }
+
+/* ===== Scroll Reveal Animation ===== */
+function initScrollReveal() {
+  const reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+}
+initScrollReveal();
 
 /* ===== Impact Counter Animation ===== */
 function animateCounters() {
@@ -84,6 +110,15 @@ if (impactSection) {
   }, { threshold: 0.3 });
   observer.observe(impactSection);
 }
+
+/* ===== Lazy Loading Images ===== */
+document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+  if (img.complete) {
+    img.classList.add('loaded');
+  } else {
+    img.addEventListener('load', () => img.classList.add('loaded'));
+  }
+});
 
 /* ===== Newsletter Form ===== */
 document.querySelectorAll('.newsletter-form').forEach(form => {
