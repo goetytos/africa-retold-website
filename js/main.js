@@ -153,13 +153,23 @@ if (contactForm) {
   });
 }
 
-/* ===== Volunteer Form ===== */
+/* ===== Volunteer Form (FormSubmit) ===== */
 const volunteerForm = document.getElementById('volunteerForm');
 if (volunteerForm) {
-  volunteerForm.addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Thank you for your interest in volunteering! We will contact you soon.');
-    volunteerForm.reset();
+  if (window.location.search.includes('applied=true')) {
+    const result = document.getElementById('volunteerResult');
+    if (result) {
+      result.style.display = 'block';
+      result.style.background = '#d4edda';
+      result.style.color = '#155724';
+      result.textContent = 'Thank you for your application! We will be in touch soon.';
+    }
+  }
+
+  volunteerForm.addEventListener('submit', () => {
+    const btn = volunteerForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
   });
 }
 
