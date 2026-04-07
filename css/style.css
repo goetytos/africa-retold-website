@@ -86,13 +86,13 @@ button,input,textarea,select{font:inherit;border:none;outline:none}
 .navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;background:transparent;transition:background .4s ease,box-shadow .4s ease,padding .4s ease;padding:8px 0}
 .navbar.scrolled{background:rgba(255,255,255,.97);box-shadow:0 2px 20px rgba(0,0,0,.08);backdrop-filter:blur(10px);padding:0}
 .navbar .container{display:flex;align-items:center;justify-content:space-between;padding:0 5%}
-.navbar .logo{display:flex;align-items:center;gap:12px;padding:10px 0}
+.navbar .logo{display:flex;align-items:center;gap:12px;padding:10px 0;flex-shrink:0;margin-right:24px}
 .navbar .logo-img{height:46px;width:auto;border-radius:6px;transition:var(--transition)}
 .navbar .logo-text{font-family:var(--font-heading);font-size:1.1rem;font-weight:700;color:var(--white);line-height:1.2;transition:color .4s ease}
 .navbar.scrolled .logo-text{color:var(--primary-dark)}
 .navbar .logo-text span{display:block;font-family:var(--font-body);font-size:.6rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:2px}
-.nav-links{display:flex;align-items:center;gap:4px}
-.nav-links a{padding:8px 14px;font-size:.82rem;font-weight:500;color:rgba(255,255,255,.9);border-radius:50px;transition:var(--transition);letter-spacing:.2px}
+.nav-links{display:flex;align-items:center;gap:4px;flex-shrink:1;flex-wrap:nowrap;min-width:0}
+.nav-links a{padding:8px 12px;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.9);border-radius:50px;transition:var(--transition);letter-spacing:.2px;white-space:nowrap}
 .navbar.scrolled .nav-links a{color:var(--dark)}
 .nav-links a:hover,.nav-links a.active{color:var(--white);background:rgba(255,255,255,.15)}
 .navbar.scrolled .nav-links a:hover,.navbar.scrolled .nav-links a.active{color:var(--primary);background:rgba(27,94,32,.08)}

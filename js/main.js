@@ -132,13 +132,24 @@ document.querySelectorAll('.newsletter-form').forEach(form => {
   });
 });
 
-/* ===== Contact Form ===== */
+/* ===== Contact Form (FormSubmit) ===== */
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Thank you for your message! We will get back to you shortly.');
-    contactForm.reset();
+  // Show success message if redirected back after submission
+  if (window.location.search.includes('sent=true')) {
+    const result = document.getElementById('contactResult');
+    if (result) {
+      result.style.display = 'block';
+      result.style.background = '#d4edda';
+      result.style.color = '#155724';
+      result.textContent = 'Thank you! Your message has been sent. We will get back to you shortly.';
+    }
+  }
+
+  contactForm.addEventListener('submit', () => {
+    const btn = document.getElementById('contactBtn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
   });
 }
 
