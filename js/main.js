@@ -58,10 +58,27 @@ if (navbar) {
   updateNavbar();
 }
 
-/* ===== Scroll Reveal Animation ===== */
+/* ===== Scroll Reveal Animation (with auto-stagger for grid siblings) ===== */
 function initScrollReveal() {
   const reveals = document.querySelectorAll('.reveal');
   if (!reveals.length) return;
+
+  // Auto-stagger reveal siblings sharing the same parent (cards in a grid, etc.)
+  const groups = new Map();
+  reveals.forEach(el => {
+    const parent = el.parentElement;
+    if (!parent) return;
+    if (!groups.has(parent)) groups.set(parent, []);
+    groups.get(parent).push(el);
+  });
+  groups.forEach(siblings => {
+    if (siblings.length > 1) {
+      siblings.forEach((el, i) => {
+        // cap delay so very large grids don't drag on
+        el.style.transitionDelay = (Math.min(i, 7) * 0.08) + 's';
+      });
+    }
+  });
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -76,25 +93,34 @@ function initScrollReveal() {
 }
 initScrollReveal();
 
-/* ===== Impact Counter Animation ===== */
+/* ===== Impact Counter Animation (easeOutQuart, rAF) ===== */
 function animateCounters() {
   const counters = document.querySelectorAll('.impact-stat .number');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   counters.forEach(counter => {
     if (counter.dataset.animated) return;
     const target = parseInt(counter.dataset.target) || parseInt(counter.textContent.replace(/\D/g, ''));
     if (!target) return;
     const suffix = counter.textContent.replace(/[\d,]/g, '');
-    let current = 0;
-    const increment = Math.ceil(target / 60);
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-      }
-      counter.textContent = current.toLocaleString() + suffix;
-    }, 30);
     counter.dataset.animated = 'true';
+    if (reduceMotion) {
+      counter.textContent = target.toLocaleString() + suffix;
+      return;
+    }
+    const duration = 1800;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      const value = Math.floor(target * eased);
+      counter.textContent = value.toLocaleString() + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        counter.textContent = target.toLocaleString() + suffix;
+      }
+    }
+    requestAnimationFrame(tick);
   });
 }
 
