@@ -17,6 +17,18 @@
 </head>
 <body>
 
+
+  <!-- Announcement Bar (driven by events.json) -->
+  <div class="announce-bar" id="announceBar" hidden>
+    <div class="announce-inner">
+      <a class="announce-link" href="#" id="announceLink">
+        <span class="announce-icon" aria-hidden="true">&#128197;</span>
+        <span class="announce-text"></span>
+        <span class="announce-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <button class="announce-close" id="announceClose" aria-label="Dismiss announcement" type="button">&times;</button>
+    </div>
+  </div>
   <!-- Navbar -->
   <nav class="navbar">
     <div class="container">

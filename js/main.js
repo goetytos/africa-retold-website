@@ -1,3 +1,67 @@
+/* ===== Announcement Bar (driven by events.json) ===== */
+(async function initAnnounceBar() {
+  const bar = document.getElementById('announceBar');
+  if (!bar) return;
+
+  // Path to events.json — works from root and from /pages/*
+  const inSubdir = window.location.pathname.includes('/pages/');
+  const eventsUrl = (inSubdir ? '../' : './') + 'events.json';
+
+  let events;
+  try {
+    const res = await fetch(eventsUrl, { cache: 'no-cache' });
+    if (!res.ok) return;
+    events = await res.json();
+  } catch (e) { return; }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const upcoming = events
+    .map(e => ({ ...e, dateObj: new Date(e.date) }))
+    .filter(e => !isNaN(e.dateObj) && e.dateObj >= today)
+    .sort((a, b) => a.dateObj - b.dateObj)[0];
+  if (!upcoming) return;
+
+  // Per-event dismiss key so a new event always re-shows even if a prior one was dismissed
+  const dismissKey = 'announce-dismissed-' + upcoming.date;
+  if (sessionStorage.getItem(dismissKey) === '1') return;
+
+  // Format date: "Sun 24 May"
+  const dateLabel = upcoming.dateObj.toLocaleDateString('en-GB', {
+    weekday: 'short', day: 'numeric', month: 'short'
+  });
+
+  // Resolve link relative to current page depth
+  let link = upcoming.link || '#';
+  if (inSubdir && link && !/^https?:|^\//.test(link)) {
+    link = link.replace(/^pages\//, '');
+  }
+
+  const textEl = bar.querySelector('.announce-text');
+  const linkEl = bar.querySelector('#announceLink');
+  const cta = upcoming.cta ? ' · ' + upcoming.cta : '';
+  textEl.textContent = dateLabel + ' · ' + upcoming.title + cta;
+  linkEl.href = link;
+
+  bar.hidden = false;
+  requestAnimationFrame(() => {
+    document.body.classList.add('has-announce');
+    bar.classList.add('visible');
+  });
+
+  const closeBtn = document.getElementById('announceClose');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      sessionStorage.setItem(dismissKey, '1');
+      bar.classList.remove('visible');
+      document.body.classList.remove('has-announce');
+      // Match transform duration so layout settles cleanly
+      setTimeout(() => { bar.hidden = true; }, 550);
+    });
+  }
+})();
+
 /* ===== Mobile Navigation ===== */
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
