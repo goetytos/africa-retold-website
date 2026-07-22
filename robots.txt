@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://africaretold.co.ke/sitemap.xml

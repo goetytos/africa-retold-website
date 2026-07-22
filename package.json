@@ -1,0 +1,8 @@
+{
+  "name": "ubuntu-retold-website",
+  "private": true,
+  "scripts": {
+    "check": "node --check js/main.js && node scripts/check-site.mjs",
+    "serve": "python3 -m http.server 4173 --bind 127.0.0.1"
+  }
+}

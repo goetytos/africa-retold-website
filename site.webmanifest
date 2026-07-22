@@ -1,0 +1,10 @@
+{
+  "name": "Ubuntu Retold Initiatives CBO",
+  "short_name": "Ubuntu Retold",
+  "description": "Building resilient communities through youth empowerment, environmental action, and African heritage.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF7F2",
+  "theme_color": "#0d3b13",
+  "icons": [{"src": "/assets/images/favicon.png", "sizes": "192x192", "type": "image/png"}]
+}

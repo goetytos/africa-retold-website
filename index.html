@@ -9,19 +9,28 @@
   <meta property="og:description" content="Building resilient communities that thrive through youth empowerment, environmental action, and African heritage.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://africaretold.co.ke/">
+  <meta property="og:image" content="https://africaretold.co.ke/assets/images/og-image.jpg">
+  <meta property="og:image:alt" content="Ubuntu Retold Initiatives team serving communities in Kenya">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://africaretold.co.ke/">
+  <meta name="theme-color" content="#0d3b13">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght@9..144,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="css/style.css?v=20260722-6">
+  <link rel="preload" as="image" href="assets/images/hero.webp" fetchpriority="high">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/plus-jakarta-sans-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/fraunces-latin.woff2" crossorigin media="(min-width: 769px)">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/caveat-latin.woff2" crossorigin media="(min-width: 769px)">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"NGO","name":"Ubuntu Retold Initiatives CBO","url":"https://africaretold.co.ke/","logo":"https://africaretold.co.ke/assets/images/logo.webp","image":"https://africaretold.co.ke/assets/images/og-image.jpg","description":"A Kenyan community-based organization advancing youth empowerment, environmental action, and African heritage.","email":"ubunturetold@gmail.com","telephone":"+254797733722","address":{"@type":"PostalAddress","addressLocality":"Kasarani","addressRegion":"Nairobi","addressCountry":"KE"},"sameAs":["https://www.facebook.com/share/17pmr3ZRFr/","https://x.com/ubunturetold","https://www.instagram.com/ubuntu.2_retoldorg","https://linkedin.com/company/ubunturetold","https://youtube.com/@afrizone3"]}</script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
 
   <!-- Announcement Bar (driven by events.json) -->
   <div class="announce-bar" id="announceBar" hidden>
     <div class="announce-inner">
-      <a class="announce-link" href="#" id="announceLink">
+      <a class="announce-link" href="pages/news.html" id="announceLink">
         <span class="announce-icon" aria-hidden="true">&#128197;</span>
         <span class="announce-text"></span>
         <span class="announce-arrow" aria-hidden="true">&rarr;</span>
@@ -33,10 +42,10 @@
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="logo">
-        <img src="assets/images/logo.jpeg" alt="Ubuntu Retold Logo" class="logo-img">
+        <img src="assets/images/logo.webp" width="180" height="117" alt="Ubuntu Retold Logo" class="logo-img" loading="eager" decoding="async" fetchpriority="high">
         <div class="logo-text">Ubuntu Retold<span>Community Resilience Hub</span></div>
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="primary-navigation">
         <a href="index.html" class="active">Home</a>
         <a href="pages/about.html">About Us</a>
         <a href="pages/projects.html">Impact</a>
@@ -45,15 +54,15 @@
         <a href="pages/contact.html">Contacts</a>
         <a href="pages/donate.html" class="nav-donate">Donate</a>
       </div>
-      <div class="hamburger">
+      <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
   </nav>
   <div class="nav-overlay"></div>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" id="main-content" tabindex="-1">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="container">
       <div class="hero-badge">I am because we are — Ubuntu</div>
@@ -139,32 +148,32 @@
       <div class="ubuntu-pillars">
         <div class="ubuntu-pillar reveal">
           <div class="u-icon">&#127774;</div>
-          <h4>Climate Action</h4>
+          <h3>Climate Action</h3>
           <p>Fighting climate change through local solutions</p>
         </div>
         <div class="ubuntu-pillar reveal">
           <div class="u-icon">&#9977;&#65039;</div>
-          <h4>Youth Empowerment</h4>
+          <h3>Youth Empowerment</h3>
           <p>Building tomorrow's leaders today</p>
         </div>
         <div class="ubuntu-pillar reveal">
           <div class="u-icon">&#129309;</div>
-          <h4>Community &amp; Mentorship</h4>
+          <h3>Community &amp; Mentorship</h3>
           <p>Strengthening bonds through guidance</p>
         </div>
         <div class="ubuntu-pillar reveal">
           <div class="u-icon">&#127912;</div>
-          <h4>Creative Arts</h4>
+          <h3>Creative Arts</h3>
           <p>Expressing heritage through art and culture</p>
         </div>
         <div class="ubuntu-pillar reveal">
           <div class="u-icon">&#128587;</div>
-          <h4>GBV Advocacy</h4>
+          <h3>GBV Advocacy</h3>
           <p>Standing against gender-based violence</p>
         </div>
         <div class="ubuntu-pillar reveal">
           <div class="u-icon">&#128105;</div>
-          <h4>Girl Child Empowerment</h4>
+          <h3>Girl Child Empowerment</h3>
           <p>Ensuring equal opportunities for girls</p>
         </div>
       </div>
@@ -180,38 +189,38 @@
       </div>
       <div class="video-grid">
         <div class="video-card reveal">
-          <video controls preload="metadata" poster="assets/images/cleanup-team.jpg">
+          <video controls preload="none" data-poster="assets/images/poster-cleanup.webp">
             <source src="assets/videos/cleanup-explanation.mp4" type="video/mp4">
           </video>
           <div class="video-info">
-            <h4>Langata Cleanup &mdash; Behind the Scenes</h4>
+            <h3>Langata Cleanup &mdash; Behind the Scenes</h3>
             <p>Siso on our partnership with The Nairobi West Hospital</p>
           </div>
         </div>
         <div class="video-card reveal">
-          <video controls preload="metadata" poster="assets/images/gallery-4.jpg">
+          <video controls preload="none" data-poster="assets/images/poster-independence.webp">
             <source src="assets/videos/kenya-independence.mp4" type="video/mp4">
           </video>
           <div class="video-info">
-            <h4>Kenya Independence Day Message</h4>
+            <h3>Kenya Independence Day Message</h3>
             <p>A reminder about the meaning of freedom</p>
           </div>
         </div>
         <div class="video-card reveal">
-          <video controls preload="metadata" poster="assets/images/gallery-3.jpg">
+          <video controls preload="none" data-poster="assets/images/poster-nigeria.webp">
             <source src="assets/videos/africa-day-nigeria.mp4" type="video/mp4">
           </video>
           <div class="video-info">
-            <h4>Africa Day — Team Nigeria</h4>
+            <h3>Africa Day — Team Nigeria</h3>
             <p>Celebrating African unity at USIU</p>
           </div>
         </div>
         <div class="video-card reveal">
-          <video controls preload="metadata" poster="assets/images/gallery-1.jpg">
+          <video controls preload="none" data-poster="assets/images/poster-sierra.webp">
             <source src="assets/videos/africa-day-sierra-leone.mp4" type="video/mp4">
           </video>
           <div class="video-info">
-            <h4>Sierra Leone Retold</h4>
+            <h3>Sierra Leone Retold</h3>
             <p>Africa Day celebrations</p>
           </div>
         </div>
@@ -230,7 +239,7 @@
         <div class="event-card reveal" style="border:2px solid var(--accent);background:linear-gradient(135deg,#fffaf0 0%,var(--white) 60%)">
           <div class="event-date"><div class="month">May</div><div class="day">24</div></div>
           <div class="event-info">
-            <h4>Africa Day at Mama Fauzia Children's Home <span style="font-size:.7rem;background:var(--primary);color:var(--white);padding:3px 10px;border-radius:10px;margin-left:6px;text-transform:uppercase;letter-spacing:.8px;vertical-align:middle;font-weight:700">Recap</span></h4>
+            <h3>Africa Day at Mama Fauzia Children's Home <span style="font-size:.7rem;background:var(--primary);color:var(--white);padding:3px 10px;border-radius:10px;margin-left:6px;text-transform:uppercase;letter-spacing:.8px;vertical-align:middle;font-weight:700">Recap</span></h3>
             <p><strong>Theme: &ldquo;Celebrating African Unity through Love, Service &amp; Community.&rdquo;</strong> This Africa Day we celebrated at Mama Fauzia Children's Home &mdash; mentoring the children, presenting gifts, doing face painting, and teaching them about Pan-Africanism and environmental conservation. A day of love, learning, and laughter.</p>
             <p style="font-size:.85rem;color:var(--gray);margin-top:8px">&#128205; Mama Fauzia Children's Home &middot; &#128197; Sunday, 24 May 2026 &middot; <a href="pages/news.html#africa-day-2026" style="color:var(--primary);font-weight:600">Read the full recap &amp; see photos</a></p>
           </div>
@@ -238,7 +247,7 @@
         <div class="event-card reveal">
           <div class="event-date" style="background:linear-gradient(135deg,var(--accent),#c8881f)"><div class="month">Apr</div><div class="day">25</div></div>
           <div class="event-info">
-            <h4>Langata Sub County Mega Cleanup <span style="font-size:.7rem;background:var(--gray-light);color:var(--primary-dark);padding:3px 8px;border-radius:10px;margin-left:6px;text-transform:uppercase;letter-spacing:.5px;vertical-align:middle">Past</span></h4>
+            <h3>Langata Sub County Mega Cleanup <span style="font-size:.7rem;background:var(--gray-light);color:var(--primary-dark);padding:3px 8px;border-radius:10px;margin-left:6px;text-transform:uppercase;letter-spacing:.5px;vertical-align:middle">Past</span></h3>
             <p><strong>Theme: &ldquo;A Cleaner Today, A Greener and Better Tomorrow.&rdquo;</strong> A community mega cleanup organised by The Nairobi West Hospital. Ubuntu Retold Initiatives joined as invited partners alongside Nairobi City County, Strathmore University, and other community partners.</p>
             <p style="font-size:.85rem;color:var(--gray);margin-top:8px">&#128205; Nairobi West, Nairobi &middot; &#128197; Saturday, 25 April 2026 &middot; 8:00 AM &middot; <a href="pages/news.html" style="color:var(--primary)">Read recap</a></p>
           </div>
@@ -246,7 +255,7 @@
         <div class="event-card reveal">
           <div class="event-date"><div class="month">May</div><div class="day">10</div></div>
           <div class="event-info">
-            <h4>Tree Planting Campaign</h4>
+            <h3>Tree Planting Campaign</h3>
             <p>Plant trees with us as we work towards our goal of 5,000 trees by end of year.</p>
           </div>
         </div>
@@ -272,10 +281,12 @@
     <div class="container">
       <h3>Stay Updated</h3>
       <p>Subscribe to our newsletter for the latest news and events.</p>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Enter your email address" required>
+      <form class="newsletter-form" novalidate>
+        <input type="email" name="email" aria-label="Email address" autocomplete="email" placeholder="Enter your email address" required>
         <button type="submit">Subscribe</button>
       </form>
+      <div class="newsletter-result" role="status" aria-live="polite"></div>
+      <p class="privacy-note">By subscribing, you agree to our <a href="pages/privacy.html">Privacy Notice</a>.</p>
     </div>
   </section>
 
@@ -284,7 +295,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/images/logo.jpeg" alt="Ubuntu Retold" class="footer-logo">
+          <img src="assets/images/logo.webp" width="180" height="117" alt="Ubuntu Retold" class="footer-logo" loading="lazy" decoding="async">
           <h4>Ubuntu Retold Initiatives CBO</h4>
           <p>Building resilient communities that thrive through youth empowerment, environmental action, and African heritage.</p>
           <div class="social-links">
@@ -316,12 +327,12 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Ubuntu Retold Initiatives CBO. All rights reserved. | <span class="tagline">Retelling Africa's Story</span></p>
+        <p>&copy; 2026 Ubuntu Retold Initiatives CBO. All rights reserved. | <a href="pages/privacy.html">Privacy Notice</a> | <span class="tagline">Retelling Africa's Story</span></p>
       </div>
     </div>
   </footer>
 
-  <button class="scroll-top" aria-label="Scroll to top">&#8679;</button>
-  <script src="js/main.js"></script>
+  <button class="scroll-top" type="button" aria-label="Scroll to top">&#8679;</button>
+  <script src="js/main.js?v=20260722-6"></script>
 </body>
 </html>
