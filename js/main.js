@@ -1,3 +1,49 @@
+/* ===== Liquid Glass Controls ===== */
+(function initLiquidGlassControls() {
+  const controls = document.querySelectorAll(
+    'a[href], button, input:not([type="hidden"]), textarea, select'
+  );
+  const canHover = window.matchMedia(
+    '(min-width: 769px) and (hover: hover) and (pointer: fine)'
+  ).matches;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!canHover || reduceMotion) return;
+
+  const inlineLinks = new Set(
+    [...controls].filter(
+      control => control.matches('a') && getComputedStyle(control).display === 'inline'
+    )
+  );
+
+  controls.forEach(control => {
+    control.classList.add('liquid-glass-control');
+    if (inlineLinks.has(control)) {
+      control.classList.add('liquid-glass-inline');
+    }
+
+    if (control.matches('input, textarea, select')) return;
+
+    control.addEventListener('pointermove', event => {
+      control.classList.add('glass-hover');
+      const rect = control.getBoundingClientRect();
+      const x = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+      const y = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
+      control.style.setProperty('--glass-light-x', `${x * 100}%`);
+      control.style.setProperty('--glass-light-y', `${y * 100}%`);
+      control.style.setProperty('--glass-shift-x', `${(x - 0.5) * 5}px`);
+      control.style.setProperty('--glass-shift-y', `${(y - 0.5) * 4}px`);
+    });
+
+    control.addEventListener('pointerleave', () => {
+      control.classList.remove('glass-hover');
+      control.style.removeProperty('--glass-light-x');
+      control.style.removeProperty('--glass-light-y');
+      control.style.removeProperty('--glass-shift-x');
+      control.style.removeProperty('--glass-shift-y');
+    });
+  });
+})();
+
 /* ===== Deferred Video Posters ===== */
 (function initDeferredVideoPosters() {
   const loadPosters = () => {
