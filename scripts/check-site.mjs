@@ -21,7 +21,6 @@ for (const file of pages) {
   if (!is404 && !/<meta name="description" content="[^"]+">/.test(html)) fail(file, 'missing meta description');
   if (!is404 && !/<link rel="canonical" href="https:\/\/africaretold\.co\.ke\/[^"]*">/.test(html)) fail(file, 'missing canonical URL');
   if (!is404 && (html.match(/<h1\b/g) || []).length !== 1) fail(file, 'must contain exactly one h1');
-  if (!is404 && !/class="skip-link"/.test(html)) fail(file, 'missing skip link');
   if (/href="#"/.test(html)) fail(file, 'contains placeholder link');
 
   for (const match of html.matchAll(/<img\b[^>]*>/g)) {

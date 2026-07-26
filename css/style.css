@@ -41,8 +41,6 @@ img{max-width:100%;height:auto;display:block}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 button,input,textarea,select{font:inherit;border:none;outline:none}
-.skip-link{position:fixed;top:8px;left:8px;z-index:2000;background:var(--white);color:var(--primary-dark);padding:10px 16px;border-radius:var(--radius-sm);font-weight:700;transform:translateY(-150%)}
-.skip-link:focus{transform:translateY(0);outline:3px solid var(--accent)}
 
 /* ===== AFROCENTRIC PATTERN (subtle SVG background) ===== */
 .afro-pattern {
