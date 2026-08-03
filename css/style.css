@@ -276,16 +276,15 @@ body.nav-open,body.lightbox-open{overflow:hidden}
 .video-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:var(--dark);transition:var(--transition)}
 .video-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
 .video-card video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#111}
+.video-card video.video-portrait{
+  width:min(100%,379px);
+  aspect-ratio:464/832;
+  object-fit:contain;
+  margin-inline:auto
+}
 .video-card .video-info{padding:20px;color:var(--white)}
 .video-card .video-info h3,.video-card .video-info h4{font-family:var(--font-heading);font-size:1rem;margin-bottom:6px}
 .video-card .video-info p{font-size:.85rem;opacity:.7}
-
-/* ===== PARTNERS ===== */
-.partners-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:28px}
-.partner-card{background:var(--white);border-radius:var(--radius);padding:36px;text-align:center;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:160px;transition:var(--transition)}
-.partner-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-.partner-card .p-logo{width:80px;height:80px;background:var(--gray-light);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:.75rem;color:var(--gray)}
-.partner-card h3,.partner-card h4{font-family:var(--font-heading);color:var(--primary-dark);font-size:1rem}
 
 /* ===== TRANSPARENCY ===== */
 .report-list{display:grid;gap:18px}
@@ -882,17 +881,17 @@ body{background:var(--cream);letter-spacing:0}
 .video-card .video-info p{font-size:.78rem}
 
 /* Editorial content modules */
-.card,.event-card,.value-card,.team-card,.donation-card,.partner-card,.report-item,
+.card,.event-card,.value-card,.team-card,.donation-card,.report-item,
 .form-card,.location-panel,.testimonial{
   border-radius:var(--radius);
   box-shadow:none;
   border:1px solid var(--line)
 }
-.card:hover,.team-card:hover,.donation-card:hover,.partner-card:hover{
+.card:hover,.team-card:hover,.donation-card:hover{
   transform:translateY(-3px);
   box-shadow:var(--shadow-lg)
 }
-.cards-grid{gap:20px}
+.cards-grid{gap:20px;align-items:start}
 .card-img{height:280px}
 .card-body{padding:30px}
 .about-img{border-radius:var(--radius);box-shadow:none;border:1px solid var(--line)}
@@ -905,10 +904,19 @@ body{background:var(--cream);letter-spacing:0}
   border-radius:0;
   margin:0 0 24px
 }
+.team-card .avatar.avatar-photo{height:auto;aspect-ratio:1}
+.team-card .avatar-photo-michael img{object-position:center 20%}
+.team-card .avatar-photo-janice{background:#050505}
+.team-card .avatar-photo-janice img{object-fit:contain}
 .team-card h3,.team-card .role,.team-card p{margin-inline:24px}
 .team-card p{margin-bottom:28px}
+@media(min-width:993px){
+  .team-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .team-card{grid-column:span 2}
+  .team-card:nth-child(4):nth-last-child(2){grid-column:2 / span 2}
+  .team-card:nth-child(5):last-child{grid-column:4 / span 2}
+}
 .donation-card{text-align:left;border-top:3px solid var(--accent)}
-.partner-card .p-logo{border-radius:2px}
 .report-item:hover,.event-card:hover,.value-card:hover{transform:translateX(3px);box-shadow:var(--shadow)}
 
 /* Internal cinematic title cards */
@@ -1175,7 +1183,7 @@ html body *{letter-spacing:0!important}
 }
 .ubuntu-pillar .u-icon{display:none}
 
-.card,.event-card,.value-card,.team-card,.donation-card,.partner-card,.report-item,
+.card,.event-card,.value-card,.team-card,.donation-card,.report-item,
 .form-card,.location-panel,.testimonial,.contact-info-card,.video-card{
   border-color:transparent
 }
@@ -1412,7 +1420,7 @@ a.liquid-glass-inline:active{
   .footer .liquid-glass-control:is(a,button){background-color:rgba(20,35,25,.88)}
 }
 
-@media(hover:none),(pointer:coarse){
+@media(hover:none),(pointer:coarse),(max-width:768px){
   .liquid-glass-control:is(a,button,input,textarea,select){
     -webkit-backdrop-filter:none!important;
     backdrop-filter:none!important
@@ -1421,7 +1429,20 @@ a.liquid-glass-inline:active{
     will-change:auto
   }
   .liquid-glass-control:is(a,button)::after{
-    display:none
+    display:block;
+    opacity:.3
+  }
+  .btn.liquid-glass-control,
+  .hamburger.liquid-glass-control,
+  .announce-close.liquid-glass-control,
+  .scroll-top.liquid-glass-control,
+  .lightbox-close.liquid-glass-control,
+  .newsletter-form button.liquid-glass-control,
+  .nav-links a.liquid-glass-control,
+  .social-links a.liquid-glass-control,
+  .liquid-glass-control:is(input,textarea,select){
+    -webkit-backdrop-filter:blur(10px) saturate(130%)!important;
+    backdrop-filter:blur(10px) saturate(130%)!important
   }
 }
 

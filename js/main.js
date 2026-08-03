@@ -3,17 +3,17 @@
   const controls = document.querySelectorAll(
     'a[href], button, input:not([type="hidden"]), textarea, select'
   );
-  const canHover = window.matchMedia(
+  const canTrackPointer = !window.matchMedia('(prefers-reduced-motion: reduce)').matches && window.matchMedia(
     '(min-width: 769px) and (hover: hover) and (pointer: fine)'
   ).matches;
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!canHover || reduceMotion) return;
 
-  const inlineLinks = new Set(
-    [...controls].filter(
-      control => control.matches('a') && getComputedStyle(control).display === 'inline'
-    )
-  );
+  const inlineLinks = canTrackPointer
+    ? new Set(
+        [...controls].filter(
+          control => control.matches('a') && getComputedStyle(control).display === 'inline'
+        )
+      )
+    : new Set();
 
   controls.forEach(control => {
     control.classList.add('liquid-glass-control');
@@ -21,7 +21,7 @@
       control.classList.add('liquid-glass-inline');
     }
 
-    if (control.matches('input, textarea, select')) return;
+    if (!canTrackPointer || control.matches('input, textarea, select')) return;
 
     control.addEventListener('pointermove', event => {
       control.classList.add('glass-hover');
