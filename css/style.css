@@ -906,6 +906,7 @@ body{background:var(--cream);letter-spacing:0}
 }
 .team-card .avatar.avatar-photo{height:auto;aspect-ratio:1}
 .team-card .avatar-photo-michael img{object-position:center 20%}
+.team-card .avatar-photo-fidel img{object-position:center 15%}
 .team-card .avatar-photo-janice{background:#050505}
 .team-card .avatar-photo-janice img{object-fit:contain}
 .team-card h3,.team-card .role,.team-card p{margin-inline:24px}
